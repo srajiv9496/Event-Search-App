@@ -34,3 +34,4 @@ cd event-search-app
 # Build and start the containers
 sudo docker-compose up --build
 # Event-Search-App
+# Event-Search-App
