@@ -1,37 +1,64 @@
-# 📌 Event Search App
-
-A full-stack event log explorer that enables powerful, concurrent searching across large log files using a React-based frontend and a multithreaded Django REST API backend. Fully containerized using Docker and Docker Compose.
-
----
-
-## 🔧 Tech Stack
-
-- **Backend**: Django REST Framework (with multithreading and pagination)
-- **Frontend**: React + Bootstrap
-- **Deployment**: Docker & Docker Compose
-- **Concurrency**: Python `ThreadPoolExecutor` for parallel log file processing
-
----
-
-## 🚀 Features
-
-- 🔍 Search events using filters: `search_string`, `start_time`, `end_time`
-- 🚀 Multithreaded backend for concurrent search across multiple `.txt` files
-- 📄 Supports paginated results for large datasets
-- 🔀 Multiple independent search blocks on the frontend
-- 🔁 "Search All" button to trigger all blocks concurrently
-- 🐳 Fully Dockerized setup for consistent local environment
-
----
-
-## 🐳 How to Run (with Docker)
-
-```bash
+Give me the proper readme.md file code:
 # Clone the repository
-git clone https://github.com/your-username/event-search-app.git
+git clone https://github.com/srajiv9496/event-search-app.git
 cd event-search-app
 
 # Build and start the containers
+```
 sudo docker-compose up --build
-# Event-Search-App
-# Event-Search-App
+```
+
+---
+
+## 🔗 Application URLs
+
+| Service         | URL                             |
+|-----------------|----------------------------------|
+| React Frontend  | [http://localhost:3000](http://localhost:3000) |
+| Django API      | [http://localhost:8000/api/search/](http://localhost:8000/api/search/) |
+
+---
+
+## 🧪 Sample API Usage
+
+```http
+GET /api/search/?search_string=ACCEPT&start_time=1725800000&end_time=1725900000
+
+```
+---
+
+## 📥 Sample JSON Response
+
+```json
+{
+  "results": [
+    {
+      "event": {
+        "srcaddr": "192.168.1.1",
+        "dstaddr": "10.0.0.2",
+        "starttime": "1725800010",
+        "endtime": "1725800050",
+        "action": "ACCEPT"
+      },
+      "file": "events1.txt",
+      "timestamp": 1725800010
+    }
+  ],
+  "count": 120,
+  "next": "http://localhost:8000/api/search/?page=2",
+  "previous": null,
+  "search_time_seconds": 0.4321
+}
+```
+---
+
+## 📁 Folder Breakdown
+
+| Folder/File         | Description                                  |
+|---------------------|----------------------------------------------|
+| `backend/`          | Django backend with REST API implementation  |
+| `frontend/`         | React application with multiblock search UI  |
+| `data/`             | Contains sample `.txt` log files             |
+| `docker-compose.yml`| Runs frontend and backend together           |
+| `Dockerfile.backend`| Dockerfile to containerize the Django app    |
+| `Dockerfile.frontend`| Dockerfile for React production build + Nginx |
