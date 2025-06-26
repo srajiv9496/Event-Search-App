@@ -58,7 +58,7 @@ GET /api/search/?search_string=ACCEPT&start_time=1725800000&end_time=1725900000
 |---------------------|----------------------------------------------|
 | `backend/`          | Django backend with REST API implementation  |
 | `frontend/`         | React application with multiblock search UI  |
-| `data/`             | Contains sample `.txt` log files             |
+| `backend/data/`     | Contains sample `.txt` log files             |
 | `docker-compose.yml`| Runs frontend and backend together           |
 | `Dockerfile.backend`| Dockerfile to containerize the Django app    |
 | `Dockerfile.frontend`| Dockerfile for React production build + Nginx |
